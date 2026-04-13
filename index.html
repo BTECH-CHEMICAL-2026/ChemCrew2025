@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChemCrew2025</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #b30000;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        img {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        select {
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .papers {
+            margin-top: 20px;
+        }
+
+        a {
+            display: block;
+            margin: 5px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>ChemCrew2025</h1>
+    <p>B.Tech Chemical Engineering Batch</p>
+</header>
+
+<div class="container">
+
+    <!-- College Image -->
+    <img src="Gec_thrissur.jpg" alt="GEC Thrissur">
+
+    <br>
+
+    <!-- Year Selection -->
+    <label><b>Select Year of Examination:</b></label><br>
+    <select onchange="showPapers(this.value)">
+        <option value="">--Select Year--</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+    </select>
+
+    <!-- Question Papers Display -->
+    <div class="papers" id="papersList"></div>
+
+</div>
+
+<script>
+    function showPapers(year) {
+
+        let papers = {
+            "2023": [
+                "2023DecCHT201.pdf",
+                "2023DecCHT203.pdf"
+            ],
+            "2022": [
+                "2022DecCHT201.pdf",
+                "2023DecCHT205.pdf"
+            ],
+            "2021": [
+                "2020DecCHT203.pdf",
+                "2021DecCHT201.pdf"
+            ]
+        };
+
+        let output = "";
+
+        if (year && papers[year]) {
+            papers[year].forEach(function(paper) {
+                output += `<a href="${year}/${paper}" target="_blank">${paper}</a>`;
+            });
+        } else {
+            output = "No papers available";
+        }
+
+        document.getElementById("papersList").innerHTML = output;
+    }
+</script>
+
+</body>
+</html>
